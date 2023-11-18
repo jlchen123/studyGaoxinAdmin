@@ -6,6 +6,7 @@ import App from './App.vue'
 import router from './router'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import 'element-plus/theme-chalk/dark/css-vars.css'
+
 const app = createApp(App)
 
 app.use(createPinia())

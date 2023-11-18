@@ -21,7 +21,7 @@
   
   <script setup lang="ts">
   import { ref } from 'vue'
-  const isDark = ref(true)
+  const isDark = ref(false)
   const toggleDark = () => {
     isDark.value = !isDark.value
     const html = document.querySelector('html')

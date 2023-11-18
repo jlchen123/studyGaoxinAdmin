@@ -7,13 +7,14 @@
           class="el-menu-vertical-demo"
           @open="handleOpen"
           @close="handleClose"
+          router
         >
          
-          <el-menu-item index="2">
+          <el-menu-item index="/board">
             <el-icon><icon-menu /></el-icon>
             <span>账户管理</span>
           </el-menu-item>
-          <el-menu-item index="3" >
+          <el-menu-item index="/log" >
             <el-icon><document /></el-icon>
             <span>日志控制台</span>
           </el-menu-item>

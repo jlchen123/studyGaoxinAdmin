@@ -11,13 +11,18 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
+    "axios": "^1.6.2",
+    "codemirror": "^5.65.15",
+    "codemirror-editor-vue3": "^2.4.1",
     "element-plus": "^2.4.2",
     "pinia": "^2.1.7",
     "vue": "^3.3.4",
+    "vue-codemirror": "^6.1.1",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@tsconfig/node18": "^18.2.2",
+    "@types/codemirror": "^5.60.13",
     "@types/node": "^18.18.5",
     "@vitejs/plugin-vue": "^4.4.0",
     "@vue/tsconfig": "^0.4.0",

@@ -1,5 +1,7 @@
 <template>
-<div>board</div>
+<div>
+   看板
+</div>
 </template>
 <script setup lang="ts">
 
