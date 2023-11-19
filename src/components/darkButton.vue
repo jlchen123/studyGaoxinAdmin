@@ -21,17 +21,22 @@
   
   <script setup lang="ts">
   import { ref } from 'vue'
+  import { useProperties} from '../global/properties'
+  const properties=useProperties();
   const isDark = ref(false)
   const toggleDark = () => {
     isDark.value = !isDark.value
+    
     const html = document.querySelector('html')
     if (html) {
       if (isDark.value) {
         html.classList.remove("dark");
         html.classList.add("light");
+        properties.mode.theme='3024-day'
       } else {
         html.classList.remove("light");
         html.classList.add("dark");
+        properties.mode.theme='ayu-mirage'
       }
   }
   }

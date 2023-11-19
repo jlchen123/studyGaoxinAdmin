@@ -21,20 +21,16 @@ const request = axios.create({
     },
 })
 
-function getToken(): string {
-    let str = localStorage.getItem(authItemName);
-    if (!str) return 'null'
-    let authObj = JSON.parse(str)
-    return authObj.token;
-}
+
 // request拦截器
 request.interceptors.request.use(
     config => {
         // 如果你要去localStor获取token,(如果你有)
-        const token = getToken()
+        const token = authorize.loginInfo.token
+       
         if (token != 'null') {
             config.headers = config.headers || {}  // 初始化 headers 为空对象
-            config.headers['token'] = token
+            config.headers['token'] =authorize.loginInfo.token
             return config
         }
 
@@ -87,7 +83,7 @@ requestImage.interceptors.request.use(
     config => {
         // 如果你要去localStor获取token,(如果你有)
         //  loading.show=true;
-        const token = getToken()
+        const token =  authorize.loginInfo.token
         if (token != 'null') {
             config.headers = config.headers || {}  // 初始化 headers 为空对象
             config.headers['token'] = token
@@ -137,7 +133,7 @@ const requestJson = axios.create({
 })
 requestJson.interceptors.request.use(
     config => {
-        const token = getToken()
+        const token =  authorize.loginInfo.token
         if (token != 'null') {
             config.headers = config.headers || {}  // 初始化 headers 为空对象
             config.headers['token'] = token

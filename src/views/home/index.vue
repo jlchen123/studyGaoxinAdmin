@@ -32,6 +32,14 @@
 <script lang="ts" setup>
 import Header from './header.vue'
 import Side from './side.vue'
-
+import { onMounted } from 'vue';
+import { useWebsocket} from '@/global/WebSocket'
+const websocket=useWebsocket()
+onMounted(() => {
+  if (websocket.flag == true) {
+    websocket.getSetup();
+    websocket.flag = false;
+  }
+});
 </script>
 <style ></style>

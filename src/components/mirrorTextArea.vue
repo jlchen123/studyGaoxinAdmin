@@ -1,21 +1,30 @@
 <template>
     <div>
+        <label style="margin-right: 20px;" >主题</label>
         <el-select v-model="value" class="m-2" placeholder="Select" size="large" change="getChange">
             <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value"
                 @click="getChange(value)" />
         </el-select>
-       <el-button type="primary">打开文件</el-button>
-        <input @change="uploadFile" type="file" class="el-button--primary">
+        <label style="margin-right: 20px;margin-left: 20px;" >选择文件</label>
+        <el-select v-model="value1" class="m-2" placeholder="Select" size="large" change="getChange">
+            <el-option v-for="item,index in props.list" :key="props.list[index]" :label="props.list[index]" :value="props.list[index]"
+                @click="getChange1(props.list[index])" />
+        </el-select>
+        <el-button style="margin-left: 20px;" @click="clear" >清屏 </el-button>
+        <div style="height: 20px;"></div>
+        <!-- <input @change="uploadFile" type="file" class="el-button--primary"> -->
+      
         <div>
-            <Codemirror v-model:value="code" :options="cmOptions"  ref="cmRef"  style="font-size: 16px; height: 100vh;line-height: 1.5;" 
-                @change="onChange" @input="onInput" @ready="onReady" @Select="onclick">
+            <Codemirror v-model:value="props.code" :options="cmOptions" ref="cmRef"
+                style="font-size: 16px; height: 85vh;line-height: 1.5;" @change="onChange" @input="onInput" @ready="onReady"
+                @Select="onclick">
             </Codemirror>
         </div>
 
     </div>
 </template>
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted } from "vue"
+import { ref, onMounted, onUnmounted, type PropType } from "vue"
 import "codemirror/mode/javascript/javascript.js"
 import Codemirror from "codemirror-editor-vue3"
 import type { CmComponentRef } from "codemirror-editor-vue3"
@@ -86,26 +95,50 @@ import 'codemirror/theme/xq-light.css'
 import 'codemirror/theme/yeti.css'
 import 'codemirror/theme/yonce.css'
 import 'codemirror/theme/zenburn.css'
+import { useProperties} from '../global/properties'
+  const properties=useProperties();
 
+const props = defineProps({
+    code: {
+        type: String,
+        required: true
+    },
+    list: {
+        type: Array as PropType<string[]>,
+        required: true
+    }
+});
+const emit = defineEmits<{
+	//fn为父组件引入子组件是定义的子组件事件属性，可随意定义
+    (event: 'fn',logName:string): void
+    (event: 'fm'): void
 
-
-const value = ref('')
+}>()
+const value = ref('ayu-mirage')
+const value1=ref(props.list[props.list.length-1])
+value1.value=props.list[props.list.length-1]
 const code = ref()
-const uploadFile = async(event: any) => {
-    console.log(event)
+const uploadFile = async (event: any) => {
+    // console.log(event)
     const file = event.target.files[0]
     const filePath = URL.createObjectURL(file)
     const response = await fetch(filePath)
-    const filteredText: any =await response.text()
+    const filteredText: any = await response.text()
     // 文件内格式处理
     code.value = filteredText
-  //  console.log(content.value)
+    //  console.log(content.value)
 }
 
 function getChange(value: string) {
-    o.value.theme = value
+    properties.mode.theme = value
 }
-
+function getChange1(value: string) {
+    value1.value=value
+   emit("fn", value)
+}
+function clear(){
+    emit("fm")
+}
 const options = ref([
     {
         value: 'ayu-mirage',
@@ -194,35 +227,36 @@ for (let i = 0; i < themes.length; i++) {
 
 const o = ref({
     mode: "text/javascript",
-    theme: 'ayu-mirage'
+    theme:''
 })
 const cmRef = ref<any>()
-let cmOptions: EditorConfiguration = o.value
+let cmOptions: EditorConfiguration =  properties.mode
 
 const onChange = (val: string, cm: Editor) => {
- //   console.log(val)
-   // console.log(cm.getValue())
+    //   console.log(val)
+    // console.log(cm.getValue())
 }
 
 const onInput = (val: string) => {
- //   console.log(val)
+    //   console.log(val)
 }
 const onclick = (val: string) => {
-  //  console.log(val)
+    //  console.log(val)
 }
 
 const onReady = (cm: Editor) => {
-  //  console.log(cm.focus())
+    console.log(props.list.length)
+    //  console.log(cm.focus())
 }
 
 onMounted(() => {
-
+   
     setTimeout(() => {
         //  cmRef.value?.refresh()
     }, 1000)
 
     setTimeout(() => {
-        //   cmRef.value?.resize(300, 200)
+        
     }, 2000)
 
     setTimeout(() => {

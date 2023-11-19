@@ -6,11 +6,8 @@ export interface IGoods {
   thumb: string[]
 }
 
-export interface CardGoods {
-  id: string
-  title: string
-  price: number
-  desc: string
-  num: number
-  thumb: string
+export interface ElSelectValue {
+  value:string
+  label:string
 }
+
