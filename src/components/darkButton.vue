@@ -23,7 +23,7 @@
   import { ref } from 'vue'
   import { useProperties} from '../global/properties'
   const properties=useProperties();
-  const isDark = ref(false)
+  const isDark = ref(true)
   const toggleDark = () => {
     isDark.value = !isDark.value
     

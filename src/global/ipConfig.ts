@@ -1,9 +1,9 @@
 //开发环境
 
-// const ip='192.168.31.104:8082'
+const ip='192.168.31.104:8082'
 
 //生产环境
-const ip='172.10.23.238:8082'
+// const ip='172.10.23.238:8082'
 
 
 // const pdfjsPath = "src/assets/pdfjs/web/viewer.html?file="

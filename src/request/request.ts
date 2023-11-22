@@ -125,7 +125,7 @@ requestImage.interceptors.response.use(
 const requestJson = axios.create({
     baseURL: ipConfig,// 所有的请求地址前缀部分(没有后端请求不用写)
     timeout: 80000, // 请求超时时间(毫秒)
-    responseType: "blob",
+   // responseType: "blob",
     headers: {
         // 设置后端需要的传参类型
         'Content-Type': 'application/json',

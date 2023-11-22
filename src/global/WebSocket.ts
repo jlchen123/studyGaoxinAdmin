@@ -1,10 +1,11 @@
 import { defineStore } from 'pinia';
 import { ip } from './ipConfig'
-import { ElMessage, ElNotification } from 'element-plus';
 
-
-import router from '../router'
+import { getUserOline } from '../request/api'
+import { useAdmin } from "../stores/admin";
 import { authorize } from '@/global/authorize'
+import { ElMessage } from 'element-plus';
+import 'element-plus/dist/index.css'
 export const useWebsocket = defineStore('websocket', {
     state: () => {
         return {
@@ -43,7 +44,9 @@ export const useWebsocket = defineStore('websocket', {
                
                 if ( this.messageRes.messageClass == 'admin') {
                     this.line=this.line+ this.messageRes.message+"\n"
-                   
+                }else if(this.messageRes.messageClass == 'onlineUser'){
+                    ElMessage.success(this.messageRes.message)
+                    getOnlineUserList()
                 }
             };
             socket.onclose = () => {
@@ -62,7 +65,11 @@ export const useWebsocket = defineStore('websocket', {
         getSetup(){
          //   console.log("getsetup")
             this.setup;
-        }
+        },
+        
     }
 });
 
+async function getOnlineUserList() {
+    useAdmin().userOnline =await getUserOline();
+  }

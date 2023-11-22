@@ -12,7 +12,20 @@
          
           <el-menu-item index="/board">
             <el-icon><icon-menu /></el-icon>
+            <span>看板</span>
+          </el-menu-item>
+          <el-menu-item index="/account" >
+            <el-icon><document /></el-icon>
             <span>账户管理</span>
+          </el-menu-item>
+          <el-menu-item index="/file" >
+            <el-icon><document /></el-icon>
+            <span>文件管理</span>
+          </el-menu-item>
+       
+          <el-menu-item index="/bbs" >
+            <el-icon><document /></el-icon>
+            <span>BBS管理</span>
           </el-menu-item>
           <el-menu-item index="/log" >
             <el-icon><document /></el-icon>
@@ -33,10 +46,10 @@
     Setting,
   } from '@element-plus/icons-vue'
   const handleOpen = (key: string, keyPath: string[]) => {
-    console.log(key, keyPath)
+   // console.log(key, keyPath)
   }
   const handleClose = (key: string, keyPath: string[]) => {
-    console.log(key, keyPath)
+  //  console.log(key, keyPath)
   }
   </script>
   

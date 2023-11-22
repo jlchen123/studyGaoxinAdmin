@@ -29,8 +29,30 @@ const routes = [
         },
         component: () => import(/* webpackChunkName: "Gaikuang" */ '../views/log/index.vue')
       },
-
-
+      {
+        path: '/account',
+        name: 'account',
+        meta: {
+          title: '账户管理',
+        },
+        component: () => import(/* webpackChunkName: "Gaikuang" */ '../views/account/account.vue')
+      },
+      {
+        path: '/file',
+        name: 'file',
+        meta: {
+          title: '文件管理',
+        },
+        component: () => import(/* webpackChunkName: "Gaikuang" */ '../views/files/file.vue')
+      },
+      {
+        path: '/bbs',
+        name: 'bbs',
+        meta: {
+          title: 'BBS管理',
+        },
+        component: () => import(/* webpackChunkName: "Gaikuang" */ '../views/BBS/bbs.vue')
+      },
     ]
   },
   {
