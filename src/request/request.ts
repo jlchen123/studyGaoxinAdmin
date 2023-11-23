@@ -4,8 +4,8 @@ import { ipConfig } from '../global/ipConfig'
 import { ElMessage } from 'element-plus'
 import { authorize } from '../global/authorize'
 import { authItemName } from '../global/ipConfig'
-
-
+import { useProperties } from '@/global/properties'
+import { start, close } from "@/global/nporgress";
 
 // 创建axios实例
 const request = axios.create({
@@ -27,7 +27,8 @@ request.interceptors.request.use(
     config => {
         // 如果你要去localStor获取token,(如果你有)
         const token = authorize.loginInfo.token
-       
+       useProperties().loading=true;
+       start()
         if (token != 'null') {
             config.headers = config.headers || {}  // 初始化 headers 为空对象
             config.headers['token'] =authorize.loginInfo.token
@@ -41,7 +42,8 @@ request.interceptors.request.use(
 )
 request.interceptors.response.use(
     response => {
-
+        useProperties().loading=false;
+        close()
         // 对响应数据做点什么
         return response.data
     },
@@ -83,6 +85,7 @@ requestImage.interceptors.request.use(
     config => {
         // 如果你要去localStor获取token,(如果你有)
         //  loading.show=true;
+        useProperties().loading=true;
         const token =  authorize.loginInfo.token
         if (token != 'null') {
             config.headers = config.headers || {}  // 初始化 headers 为空对象
@@ -97,7 +100,7 @@ requestImage.interceptors.request.use(
 )
 requestImage.interceptors.response.use(
     response => {
-
+        useProperties().loading=false;
         return response.data
     },
     error => {
@@ -133,6 +136,7 @@ const requestJson = axios.create({
 })
 requestJson.interceptors.request.use(
     config => {
+        useProperties().loading=true;
         const token =  authorize.loginInfo.token
         if (token != 'null') {
             config.headers = config.headers || {}  // 初始化 headers 为空对象
@@ -146,6 +150,7 @@ requestJson.interceptors.request.use(
 )
 requestJson.interceptors.response.use(
     response => {
+        useProperties().loading=false;
         return response.data
     },
     error => {

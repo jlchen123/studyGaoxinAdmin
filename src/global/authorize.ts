@@ -9,7 +9,8 @@ export const authorize = {
         message: '',
         base64Image: '',
         personalMessage: '',
-    }
+    },
+    loading:false,
     
   }
   

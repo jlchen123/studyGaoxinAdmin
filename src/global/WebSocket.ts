@@ -72,4 +72,7 @@ export const useWebsocket = defineStore('websocket', {
 
 async function getOnlineUserList() {
     useAdmin().userOnline =await getUserOline();
+    
+    useAdmin().option.series[0].data[0].value=useAdmin().userOnline.length;
+    (useAdmin().myChart as any).setOption(useAdmin().option);
   }

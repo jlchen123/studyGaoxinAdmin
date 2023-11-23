@@ -25,6 +25,7 @@
     "@tsconfig/node18": "^18.2.2",
     "@types/codemirror": "^5.60.13",
     "@types/node": "^18.18.5",
+    "@types/nprogress": "^0.2.3",
     "@vitejs/plugin-vue": "^4.4.0",
     "@vue/tsconfig": "^0.4.0",
     "npm-run-all2": "^6.1.1",

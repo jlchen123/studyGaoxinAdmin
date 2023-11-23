@@ -6,7 +6,8 @@ export const useProperties = defineStore('properties', {
             mode:{
                 mode: "text/javascript",
                 theme: '3024-day',
-            }
+            },
+           loading:false
         };
     },
     getters: {

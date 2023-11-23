@@ -30,17 +30,20 @@ export default {
         // 接下来的使用就跟之前一样，初始化图表，设置配置项
         var chartDom = document.getElementById('main1');
         var myChart = echarts.init(chartDom);
-        myChart.width = 100;
-        myChart.height = 100;
+        
         var option;
         option = {
             title: {
-        text: '热门技术',
-        subtext: '最受人喜爱的技术',
-        left: 'center'
-      },
+                text: '热门技术',
+                subtext: '最受人喜爱的技术',
+                left: 'center'
+            },
             legend: {
-                top: 'bottom'
+                type: 'scroll',
+                orient: 'vertical',
+                right: 10,
+                top: 200,
+                bottom: 20,
             },
             tooltip: {
                 trigger: 'item',
@@ -52,8 +55,8 @@ export default {
                 {
                     name: '总学时',
                     type: 'pie',
-                    radius: [20, 150],
-                    center: ['50%', '50%'],
+                    radius: [50, 250],
+                    center: ['50%', '70%'],
                     label: {
                         show: false
                     },
@@ -71,8 +74,8 @@ export default {
 </script>
 <style>
 #main1 {
-    /* width: 600px; */
-    height: 400px;
+    width: 800px;
+    height: 500px;
     margin: auto;
 
 

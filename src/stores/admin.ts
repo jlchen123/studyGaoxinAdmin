@@ -1,15 +1,19 @@
 import { defineStore } from 'pinia';
 
 export const useAdmin = defineStore('admin', {
-    state: () => {
-        return {
-            userOnline: [{
+	state: () => {
+		return {
+			userOnline: [{
 				uId: '',
 				unit: '',
 				userDepartment: '',
 				username: '',
 			}],
-            authObj: {
+			data: {
+				value: 0,
+				name: '在线人数'
+			},
+			authObj: {
 				userId: '',
 				userDepartment: '',
 				username: '',
@@ -20,12 +24,37 @@ export const useAdmin = defineStore('admin', {
 				base64Image: '',
 				personalMessage: '',
 			},
-        };
-    },
-    getters: {},
-    actions: {
-       
+			option : {
+				tooltip: {
+					formatter: '{a} <br/>{b} : {c}人'
+				},
+				series: [
+					{
+						name: '压力',
+						type: 'gauge',
+						progress: {
+							show: true
+						},
+						detail: {
+							valueAnimation: true,
+							formatter: '{value}'
+						},
+						data: [
+							{
+								value:0,
+								name: '在线人数'
+							}
+						]
+					}
+				]
+			},
+			myChart: {}
+		};
+	},
+	getters: {},
+	actions: {
 
 
-    }
+
+	}
 });

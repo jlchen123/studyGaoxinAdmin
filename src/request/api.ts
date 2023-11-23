@@ -28,6 +28,12 @@ requestJson.post("/api/updateAccounts", data);
 export const delAccount = (data: any): any =>
 request.post("/api/delAccount", data);
 
+export const getDate = (data: any): any =>
+request.post("/api/getDate", data);
+
+export const getUserInfo = (): any =>
+request.get("/api/getUserInfo");
+
 export const updateFileList = ():any =>
 request.post("api/updateFileList");
 export const getUserOline = (): any =>
