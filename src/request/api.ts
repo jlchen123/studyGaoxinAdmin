@@ -34,7 +34,26 @@ request.post("/api/getDate", data);
 export const getUserInfo = (): any =>
 request.get("/api/getUserInfo");
 
-export const updateFileList = ():any =>
+export const updateFileList = () =>
 request.post("api/updateFileList");
 export const getUserOline = (): any =>
 request.get("api/getOnlineUser");
+
+export const getTechnicals= (): any =>
+request.get("/api/getTechnicals");
+
+export const delFile = (data: any): any =>
+request.post("api/AdminDelFile", data);
+
+export const insertPlate = (data: any): any =>
+request.post("api/insertPlate", data);
+
+    export const getPlate = (data: any): any =>
+    request.post("api/getPlate", data);
+    export const getTopicList = (data: any): any =>
+request.post("api/upDateTopicList", data);
+export const delTopic = (data: any): any =>
+request.post("api/delTopic", data);
+
+export const updateBBSFiles = (): any =>
+request.post("api/updateBBSFiles");

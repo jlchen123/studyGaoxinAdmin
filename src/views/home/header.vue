@@ -17,8 +17,7 @@
     
     <el-sub-menu index="2">
       <template #title>个人中心</template>
-      <el-menu-item index="2-1" >item one</el-menu-item>
-      <el-menu-item index="2-2">item two</el-menu-item>
+      <el-menu-item index="2-1" @click="goback" >返回平台</el-menu-item>
       <el-menu-item index="2-3" @click="logout">退出登录</el-menu-item>
 
     </el-sub-menu>
@@ -48,6 +47,13 @@ function logout(){
   localStorage.removeItem(authItemName)
   router.push('/login');
 }
+function goback(){
+  jumpUrl('172.10.23.238:8080/studyGaoxin')
+}
+function jumpUrl(url: string) {
+  let path = window.location.protocol + '//' + url
+  window.location.href = path
+};
 </script>
 
 <style>

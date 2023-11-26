@@ -12,7 +12,7 @@
          
           <el-menu-item index="/board">
             <el-icon><icon-menu /></el-icon>
-            <span>看板</span>
+            <span>看板管理</span>
           </el-menu-item>
           <el-menu-item index="/account" >
             <el-icon><document /></el-icon>
